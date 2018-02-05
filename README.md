@@ -8,7 +8,10 @@ All commands below must be run from a macOS Terminal.
 
 ## Prerequisite
 
-Install Brew
+_(Tasks to perform only once)_  
+
+
+Install Brew (see also [https://brew.sh/](https://brew.sh/))
 ```
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
