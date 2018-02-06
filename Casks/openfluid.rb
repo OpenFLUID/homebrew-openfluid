@@ -1,7 +1,7 @@
 cask 'openfluid' do
 
   version '2.1.5'
-  sha256 'f08a92d215a2a0fa0ef936086c71d41231f6989c33bbe67b832ba066b9da8e55'
+  sha256 '3c8848b62dcae2b49682fdff9459d3bada3b18af386766e6adbf641abd5ef05e'
 
   url 'https://www.openfluid-project.org/dloadsproxy/final/v2.1.5/openfluid_2.1.5_osx64.tar.bz2'
   name 'OpenFLUID'
