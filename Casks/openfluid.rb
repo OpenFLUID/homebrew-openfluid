@@ -13,7 +13,7 @@ cask 'openfluid' do
   depends_on formula: 'rapidjson'
   depends_on formula: 'gdal'
   depends_on formula: 'geos'
-  depends_on formula: 'qt'
+  depends_on formula: 'qt5'
   depends_on formula: 'p7zip'
   depends_on formula: 'gnuplot'
   depends_on formula: 'cmake'
@@ -30,8 +30,8 @@ cask 'openfluid' do
 
   # preinstall operations
   preflight do
-  	
-  	# creation of a wrapper for the command line program 
+
+  	# creation of a wrapper for the command line program
   	# to introduce the OPENFLUID_INSTALL_PREFIX env. var.
     IO.write cliwrapper, <<~EOS
       #!/bin/sh
@@ -44,7 +44,7 @@ cask 'openfluid' do
   for OFapp in OFapps
     app "bin/#{OFapp}.app"
   end
- 
+
 
   # link of the command line wrapper into /usr/local/bin
   binary cliwrapper, target:'openfluid'
@@ -52,7 +52,7 @@ cask 'openfluid' do
 
   # postinstall operations
   postflight do
-  	
+
   	# on .app bundles
     for OFapp in OFapps
     	  # set of the lib path as an rpath
