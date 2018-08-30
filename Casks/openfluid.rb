@@ -1,7 +1,7 @@
 cask 'openfluid' do
 
   version '2.1.5'
-  sha256 '3c8848b62dcae2b49682fdff9459d3bada3b18af386766e6adbf641abd5ef05e'
+  sha256 '52bf0bd4abce9633a757ca655005b34b3243668a6faa0cbf376f1218c03dd950'
 
   url 'https://www.openfluid-project.org/dloadsproxy/final/v2.1.5/openfluid_2.1.5_osx64.tar.bz2'
   name 'OpenFLUID'
@@ -13,7 +13,7 @@ cask 'openfluid' do
   depends_on formula: 'rapidjson'
   depends_on formula: 'gdal'
   depends_on formula: 'geos'
-  depends_on formula: 'qt5'
+  depends_on formula: 'qt'
   depends_on formula: 'p7zip'
   depends_on formula: 'gnuplot'
   depends_on formula: 'cmake'
@@ -30,8 +30,8 @@ cask 'openfluid' do
 
   # preinstall operations
   preflight do
-
-  	# creation of a wrapper for the command line program
+  	
+  	# creation of a wrapper for the command line program 
   	# to introduce the OPENFLUID_INSTALL_PREFIX env. var.
     IO.write cliwrapper, <<~EOS
       #!/bin/sh
@@ -44,7 +44,7 @@ cask 'openfluid' do
   for OFapp in OFapps
     app "bin/#{OFapp}.app"
   end
-
+ 
 
   # link of the command line wrapper into /usr/local/bin
   binary cliwrapper, target:'openfluid'
@@ -52,7 +52,7 @@ cask 'openfluid' do
 
   # postinstall operations
   postflight do
-
+  	
   	# on .app bundles
     for OFapp in OFapps
     	  # set of the lib path as an rpath
