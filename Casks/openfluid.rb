@@ -1,9 +1,9 @@
 cask 'openfluid' do
 
-  version '2.1.5'
-  sha256 '52bf0bd4abce9633a757ca655005b34b3243668a6faa0cbf376f1218c03dd950'
+  version '2.1.6'
+  sha256 '8436db0d10083c6f7aedde5a7ab41635471cf904743652305e1030a60855d61b'
 
-  url 'https://www.openfluid-project.org/dloadsproxy/final/v2.1.5/openfluid_2.1.5_osx64.tar.bz2'
+  url 'https://www.openfluid-project.org/dloadsproxy/final/v2.1.6/openfluid_2.1.6_osx64.tar.bz2'
   name 'OpenFLUID'
   homepage 'https://wwww.openfluid-project.org'
 
@@ -13,7 +13,7 @@ cask 'openfluid' do
   depends_on formula: 'rapidjson'
   depends_on formula: 'gdal'
   depends_on formula: 'geos'
-  depends_on formula: 'qt'
+  depends_on formula: 'qt5'
   depends_on formula: 'p7zip'
   depends_on formula: 'gnuplot'
   depends_on formula: 'cmake'
