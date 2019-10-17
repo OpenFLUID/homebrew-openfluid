@@ -1,11 +1,11 @@
 cask 'openfluid' do
 
-  version '2.1.8'
-  sha256 '673382005dbbfc97f0e555d84fcd9e51b8b0fa3fc813c953a7bbdc38c7abaaaf'
+  version '2.1.9'
+  sha256 '1cb668090feea785c98ff92b867ec60121e8e6b82b7b90b9cbddb59f79ecf4af'
 
-  url 'https://www.openfluid-project.org/dloadsproxy/final/v2.1.8/openfluid_2.1.8_osx64.tar.bz2'
+  url 'https://www.openfluid-project.org/dloadsproxy/final/v2.1.9/openfluid_2.1.9_osx64.tar.bz2'
   name 'OpenFLUID'
-  homepage 'https://wwww.openfluid-project.org'
+  homepage ''
 
 
   # external dependencies
