@@ -1,11 +1,19 @@
 cask 'openfluid' do
 
-  version '2.1.9'
-  sha256 '1cb668090feea785c98ff92b867ec60121e8e6b82b7b90b9cbddb59f79ecf4af'
-
-  url 'https://www.openfluid-project.org/dloadsproxy/final/v2.1.9/openfluid_2.1.9_osx64.tar.bz2'
+  # description
+  version '2.1.10'
   name 'OpenFLUID'
-  homepage ''
+  homepage 'https://www.openfluid-project.org'
+
+  
+  # file to download
+  if MacOS.version <= :mojave
+    url 'https://www.openfluid-project.org/dloadsproxy/final/v2.1.10/openfluid_2.1.10_osx64-mojave.tar.bz2'
+    sha256 'b4dafec29ca3ab8be5f51b4bc93504245eca5fbed60a6cf78285bebf9fcde03c'
+  else # catalina and higher
+    url 'https://www.openfluid-project.org/dloadsproxy/final/v2.1.10/openfluid_2.1.10_osx64-catalina.tar.bz2'
+    sha256 '429b9ed6996e7ac1f3cb33f4d5009a21e20185125630a1ff1c4e262cab6863c6'
+  end
 
 
   # external dependencies
@@ -20,7 +28,7 @@ cask 'openfluid' do
 
 
   # system dependencies
-  depends_on macos: '>= :el_capitan'
+  depends_on macos: '>= :yosemite'
 
 
   # variables used during installation process
