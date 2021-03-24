@@ -1,19 +1,16 @@
 cask 'openfluid' do
 
   # description
-  version '2.1.10'
+  version '2.1.11'
   name 'OpenFLUID'
   homepage 'https://www.openfluid-project.org'
 
   
   # file to download
-  if MacOS.version <= :mojave
-    url 'https://www.openfluid-project.org/dloadsproxy/final/v2.1.10/openfluid_2.1.10_osx64-mojave.tar.bz2'
-    sha256 'b4dafec29ca3ab8be5f51b4bc93504245eca5fbed60a6cf78285bebf9fcde03c'
-  else # catalina and higher
-    url 'https://www.openfluid-project.org/dloadsproxy/final/v2.1.10/openfluid_2.1.10_osx64-catalina.tar.bz2'
-    sha256 '429b9ed6996e7ac1f3cb33f4d5009a21e20185125630a1ff1c4e262cab6863c6'
-  end
+  # if MacOS.version == :catalina
+  url 'https://www.openfluid-project.org/dloadsproxy/final/v2.1.11/openfluid_2.1.11_osx64-catalina.tar.bz2'
+  sha256 '2948053b875e3acf424f9ef80ad4103bf73c35d468283582c725e8c0f3aac1da'
+  # end
 
 
   # external dependencies
@@ -28,7 +25,7 @@ cask 'openfluid' do
 
 
   # system dependencies
-  depends_on macos: '>= :yosemite'
+  depends_on macos: '>= :catalina'
 
 
   # variables used during installation process
@@ -38,9 +35,8 @@ cask 'openfluid' do
 
   # preinstall operations
   preflight do
-  	
-  	# creation of a wrapper for the command line program 
-  	# to introduce the OPENFLUID_INSTALL_PREFIX env. var.
+    # creation of a wrapper for the command line program 
+    # to introduce the OPENFLUID_INSTALL_PREFIX env. var.
     IO.write cliwrapper, <<~EOS
       #!/bin/sh
       OPENFLUID_INSTALL_PREFIX="#{staged_path}" "#{staged_path}/bin/openfluid" "$@"
@@ -60,10 +56,9 @@ cask 'openfluid' do
 
   # postinstall operations
   postflight do
-  	
-  	# on .app bundles
+    # on .app bundles
     for OFapp in OFapps
-    	  # set of the lib path as an rpath
+      # set of the lib path as an rpath
       system "install_name_tool","-add_rpath","#{staged_path}/lib/","#{appdir}/#{OFapp}.app/Contents/MacOS/#{OFapp}"
       # add of the OPENFLUID_INSTALL_PREFIX env. var.
       system "defaults","write","#{appdir}/#{OFapp}.app/Contents/Info","LSEnvironment","<dict><key>OPENFLUID_INSTALL_PREFIX</key><string>#{staged_path}</string></dict>"
@@ -71,7 +66,6 @@ cask 'openfluid' do
 
     # add of the OPENFLUID_INSTALL_PREFIX env. var. on the command line program
     system "install_name_tool","-add_rpath","#{staged_path}/lib/","#{staged_path}/bin/openfluid"
-
   end
 
 end
